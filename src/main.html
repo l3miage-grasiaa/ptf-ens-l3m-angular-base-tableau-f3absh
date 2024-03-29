@@ -1,0 +1,55 @@
+Template à compléter, le résultat attendu est présenté ici :
+<a
+  href="https://alexdmr.github.io/l3m-exo-ptf-ens-angular-tableau/"
+  target="blank"
+  >https://alexdmr.github.io/l3m-exo-ptf-ens-angular-tableau/</a
+>
+
+<hr />
+<pre>
+  Add a new people :
+  
+  Student  <input
+            type="checkbox"
+            [ngModel]="peopleToAdd().isStudent"
+            (ngModelChange)="updatePeople('isStudent',$event)"  
+          />
+  Name     <input
+            type="text"
+            [ngModel]="peopleToAdd().name"
+            (ngModelChange)="updatePeople('name',$event)"  
+          />
+  Forename <input
+            type="text"
+            [ngModel]="peopleToAdd().forename"
+            (ngModelChange)="updatePeople('forename',$event)"  
+          />
+  Size     <input
+            type="number"
+            value="0"
+            [ngModel]="peopleToAdd().size"
+            (ngModelChange)="updatePeople('size',$event)"  
+          />
+  <!-- Tinggal abonné sama click trus manggil appendPeople() -->
+                <button (click)="appendPeople(peopleToAdd())">Append people</button>
+</pre>
+
+<hr />
+<pre>People to be added: {{peopleToAdd() | json}}</pre>
+<hr />
+
+<table>
+  <tr>
+    <th>isStudent</th>
+    <th>Name</th>
+    <th>Forename</th>
+    <th>Size</th>
+  </tr>
+  <tr *ngFor="let people of data()">
+    <td>{{people.isStudent}}</td>
+    <td>{{people.name}}</td>
+    <td>{{people.forename}}</td>
+    <td>{{people.size}}</td>
+    <button (click)="removePeople(people)">remove</button>
+  </tr>
+</table>
